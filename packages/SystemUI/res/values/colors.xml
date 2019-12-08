@@ -211,4 +211,5 @@
 
     <color name="volume_dialog_bottom_tint">#0D000000</color>
 
+   <color name="keyguard_affordance_background_color">#80000000</color>
 </resources>
