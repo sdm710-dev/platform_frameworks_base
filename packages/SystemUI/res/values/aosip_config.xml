@@ -18,6 +18,9 @@
     <!-- Allow devices override audio panel location to the left side -->
     <bool name="config_audioPanelOnLeftSide">false</bool>
 
+    <!-- Enable face auth only when swiping security view -->
+    <bool name="config_faceAuthOnlyOnSecurityView">false</bool>
+
     <!-- Hardware ui (power menu) alignment:
          Use one of the following values basing on the power button position:
          * Top | Back -> 49 (Gravity.TOP | Gravity.CENTER_HORIZONTAL)
