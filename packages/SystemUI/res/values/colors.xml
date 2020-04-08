@@ -202,12 +202,9 @@
     <color name="GM2_yellow_500">#FFFBBC04</color>
     <color name="GM2_green_500">#FF34A853</color>
 
-<<<<<<< HEAD
     <color name="qs_tile_background_color_disabled">#f2f2f2</color>
 
-=======
     <color name="volume_dialog_background">@android:color/white</color>
->>>>>>> 71c325493a1... volumedialog: adjust dark theme colors
     <color name="volume_background_tint">#f2f2f2</color>
 
     <color name="ringer_icon_normal">#5c5c5c</color>
