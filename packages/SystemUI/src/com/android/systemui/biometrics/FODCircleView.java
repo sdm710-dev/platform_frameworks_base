@@ -26,7 +26,6 @@ import android.graphics.Paint;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
-import android.hardware.biometrics.BiometricSourceType;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.os.Looper;
@@ -67,6 +66,7 @@ public class FODCircleView extends ImageView {
 
     private IFingerprintInscreen mFingerprintInscreenDaemon;
 
+    private int mDreamingOffsetX;
     private int mDreamingOffsetY;
 
     private boolean mIsBouncer;
@@ -74,7 +74,8 @@ public class FODCircleView extends ImageView {
     private boolean mIsKeyguard;
     private boolean mIsShowing;
     private boolean mIsCircleShowing;
-    private boolean mIsAuthenticated;
+
+    private float mCurrentDimAmount = 0.0f;
 
     private Handler mHandler;
 
@@ -172,12 +173,6 @@ public class FODCircleView extends ImageView {
         }
 
         @Override
-        public void onBiometricAuthenticated(int userId, BiometricSourceType biometricSourceType) {
-            super.onBiometricAuthenticated(userId, biometricSourceType);
-            mIsAuthenticated = true;
-        }
-
-        @Override
         public void onScreenTurnedOff() {
             hideCircle();
         }
@@ -240,6 +235,15 @@ public class FODCircleView extends ImageView {
 
         mFODAnimation = new FODAnimation(context, mPositionX, mPositionY);
 
+        getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            float drawingDimAmount = mParams.dimAmount;
+            if (mCurrentDimAmount == 0.0f && drawingDimAmount > 0.0f) {
+                dispatchPress();
+                mCurrentDimAmount = drawingDimAmount;
+            } else if (mCurrentDimAmount > 0.0f && drawingDimAmount == 0.0f) {
+                mCurrentDimAmount = drawingDimAmount;
+            }
+        });
     }
 
     @Override
@@ -372,10 +376,6 @@ public class FODCircleView extends ImageView {
     }
 
     public void showCircle() {
-        if (mIsAuthenticated) {
-            return;
-        }
-
         mIsCircleShowing = true;
 
         setKeepScreenOn(true);
@@ -388,7 +388,6 @@ public class FODCircleView extends ImageView {
         updateAlpha();
 
         setFODPressedState();
-        setColorFilter(Color.argb(0,0,0,0), PorterDuff.Mode.SRC_ATOP);
         invalidate();
     }
 
@@ -411,7 +410,6 @@ public class FODCircleView extends ImageView {
         }
 
         mIsShowing = true;
-        mIsAuthenticated = false;
 
         dispatchShow();
         setVisibility(View.VISIBLE);
@@ -475,6 +473,7 @@ public class FODCircleView extends ImageView {
         }
 
         if (mIsDreaming) {
+            //mParams.x += mDreamingOffsetX;
             mParams.y += mDreamingOffsetY;
             mFODAnimation.updateParams(mParams.y);
         }
@@ -512,8 +511,19 @@ public class FODCircleView extends ImageView {
         @Override
         public void run() {
             long now = System.currentTimeMillis() / 1000 / 60;
+
+            mDreamingOffsetX = (int) (now % (mDreamingMaxOffset * 4));
+            if (mDreamingOffsetX > mDreamingMaxOffset * 2) {
+                mDreamingOffsetX = mDreamingMaxOffset * 4 - mDreamingOffsetX;
+            }
+
             // Let y to be not synchronized with x, so that we get maximum movement
             mDreamingOffsetY = (int) ((now + mDreamingMaxOffset / 3) % (mDreamingMaxOffset * 2));
+            if (mDreamingOffsetY > mDreamingMaxOffset * 2) {
+                mDreamingOffsetY = mDreamingMaxOffset * 4 - mDreamingOffsetY;
+            }
+
+            mDreamingOffsetX -= mDreamingMaxOffset;
             mDreamingOffsetY -= mDreamingMaxOffset;
 
             mHandler.post(() -> updatePosition());
