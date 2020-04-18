@@ -6286,7 +6286,7 @@ public final class Settings {
          */
         public static final String SMART_CHARGING_LEVEL = "smart_charging_level";
 
-         * Applications list where heasdup should't show
+        /* * Applications list where heasdup should't show
          *
          * @hide
          */
