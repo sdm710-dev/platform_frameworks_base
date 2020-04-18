@@ -5842,15 +5842,6 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
-         * Wheter to show gentle notification header
-         * @hide
-         */
-        public static final String SHOW_GENTLE_HEADER = "show_gentle_header";
-
-        /** @hide */
-        private static final Validator SHOW_GENTLE_HEADER_VALIDATOR = BOOLEAN_VALIDATOR;
-
-        /**
          * @hide
          */
         public static final String LOCK_SHOW_STATUS_BAR = "lockscreen_show_status_bar";
@@ -6306,6 +6297,14 @@ public final class Settings {
                 ANY_STRING_VALIDATOR;
 
         /**
+         * Controls whether to show R style notification headers
+         * @hide
+         */
+        public static final String NOTIFICATION_HEADERS = "notification_headers";
+
+        private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -6375,7 +6374,6 @@ public final class Settings {
             BUTTON_BRIGHTNESS,
             AMBIENT_WAKE_GESTURES,
             NOTIFICATION_SOUND_VIB_SCREEN_ON,
-            SHOW_GENTLE_HEADER,
             BUTTON_EXTRA_KEY_MAPPING,
             DEVICE_PROXI_CHECK_ENABLED,
             ANBI_ENABLED_OPTION,
@@ -6543,6 +6541,7 @@ public final class Settings {
             HEADS_UP_TIMEOUT,
             HEADS_UP_STOPLIST_VALUES,
             HEADS_UP_BLACKLIST_VALUES,
+            NOTIFICATION_HEADERS,
         };
 
         /**
@@ -7000,7 +6999,6 @@ public final class Settings {
             VALIDATORS.put(DOZE_ON_CHARGE, DOZE_ON_CHARGE_VALIDATOR);
             VALIDATORS.put(NOTIFICATION_SOUND_VIB_SCREEN_ON,
                     NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR);
-            VALIDATORS.put(SHOW_GENTLE_HEADER, SHOW_GENTLE_HEADER_VALIDATOR);
             VALIDATORS.put(USE_OLD_MOBILETYPE, USE_OLD_MOBILETYPE_VALIDATOR);
             VALIDATORS.put(QS_PANEL_BG_ALPHA, QS_PANEL_BG_ALPHA_VALIDATOR);
             VALIDATORS.put(PULSE_BRIGHTNESS, PULSE_BRIGHTNESS_VALIDATOR);
@@ -7056,6 +7054,7 @@ public final class Settings {
             VALIDATORS.put(HEADS_UP_TIMEOUT,HEADS_UP_TIMEOUT_VALIDATOR);
             VALIDATORS.put(HEADS_UP_STOPLIST_VALUES, HEADS_UP_STOPLIST_VALUES_VALIDATOR);
             VALIDATORS.put(HEADS_UP_BLACKLIST_VALUES, HEADS_UP_BLACKLIST_VALUES_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
         }
 
         /**
