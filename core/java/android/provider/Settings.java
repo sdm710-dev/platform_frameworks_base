@@ -6322,7 +6322,6 @@ public final class Settings {
         /** @hide */
         private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
->>>>>>> 93499a5a4bb... base: notch-city: Add 3 mode display cutout handler
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -6561,12 +6560,9 @@ public final class Settings {
             HEADS_UP_TIMEOUT,
             HEADS_UP_STOPLIST_VALUES,
             HEADS_UP_BLACKLIST_VALUES,
-<<<<<<< HEAD
             NOTIFICATION_HEADERS,
-=======
             DISPLAY_CUTOUT_MODE,
             STOCK_STATUSBAR_IN_HIDE,
->>>>>>> 93499a5a4bb... base: notch-city: Add 3 mode display cutout handler
         };
 
         /**
@@ -7081,12 +7077,9 @@ public final class Settings {
             VALIDATORS.put(HEADS_UP_TIMEOUT,HEADS_UP_TIMEOUT_VALIDATOR);
             VALIDATORS.put(HEADS_UP_STOPLIST_VALUES, HEADS_UP_STOPLIST_VALUES_VALIDATOR);
             VALIDATORS.put(HEADS_UP_BLACKLIST_VALUES, HEADS_UP_BLACKLIST_VALUES_VALIDATOR);
-<<<<<<< HEAD
             VALIDATORS.put(NOTIFICATION_HEADERS, NOTIFICATION_HEADERS_VALIDATOR);
-=======
             VALIDATORS.put(DISPLAY_CUTOUT_MODE, DISPLAY_CUTOUT_MODE_VALIDATOR);
             VALIDATORS.put(STOCK_STATUSBAR_IN_HIDE, STOCK_STATUSBAR_IN_HIDE_VALIDATOR);
->>>>>>> 93499a5a4bb... base: notch-city: Add 3 mode display cutout handler
         }
 
         /**
