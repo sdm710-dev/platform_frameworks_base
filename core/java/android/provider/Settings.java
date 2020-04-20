@@ -6231,6 +6231,7 @@ public final class Settings {
 
         private static final Validator OMNI_AUTO_BRIGHTNESS_MIN_VALUE_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
+
         /**
          * Whether to use new QS panel bg tint or not
          * @hide
@@ -6239,6 +6240,15 @@ public final class Settings {
 
         /** @hide */
         private static final Validator QS_PANEL_BG_USE_NEW_TINT_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
+         * Whether to show QS panels
+         * @hide
+         */
+        public static final String QS_TILE_PANELS = "qs_tile_panels";
+
+        /** @hide */
+        private static final Validator QS_TILE_PANELS_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
          * IMPORTANT: If you add a new public settings you also have to add it to
@@ -6304,6 +6314,26 @@ public final class Settings {
 
         private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
 	/**
+         * Control how to handle the display cutout
+         * @hide
+         */
+        public static final String DISPLAY_CUTOUT_MODE = "display_cutout_mode";
+
+        /** @hide */
+        private static final Validator DISPLAY_CUTOUT_MODE_VALIDATOR = new
+                SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+
+        /**
+         * Control how to handle the display cutout
+         * @hide
+         */
+        public static final String STOCK_STATUSBAR_IN_HIDE = "stock_statusbar_in_hide";
+
+        /** @hide */
+        private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Control how to handle the display cutout
          * @hide
          */
@@ -6556,6 +6586,7 @@ public final class Settings {
             FORCE_EXPANDED_NOTIFICATIONS,
             BACK_GESTURE_HAPTIC,
             QS_PANEL_BG_USE_NEW_TINT,
+            QS_TILE_PANELS,
             HEADS_UP_NOTIFICATION_SNOOZE,
             HEADS_UP_TIMEOUT,
             HEADS_UP_STOPLIST_VALUES,
@@ -7073,6 +7104,7 @@ public final class Settings {
             VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS, FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
             VALIDATORS.put(BACK_GESTURE_HAPTIC, BACK_GESTURE_HAPTIC_VALIDATOR);
             VALIDATORS.put(QS_PANEL_BG_USE_NEW_TINT, QS_PANEL_BG_USE_NEW_TINT_VALIDATOR);
+            VALIDATORS.put(QS_TILE_PANELS, QS_TILE_PANELS_VALIDATOR);
             VALIDATORS.put(HEADS_UP_NOTIFICATION_SNOOZE,HEADS_UP_NOTIFICATION_SNOOZE_VALIDATOR);
             VALIDATORS.put(HEADS_UP_TIMEOUT,HEADS_UP_TIMEOUT_VALIDATOR);
             VALIDATORS.put(HEADS_UP_STOPLIST_VALUES, HEADS_UP_STOPLIST_VALUES_VALIDATOR);
