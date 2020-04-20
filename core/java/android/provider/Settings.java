@@ -5360,15 +5360,6 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
-         * Color to change battery precentage text when charging
-         * @hide
-         */
-        public static final String STATUS_BAR_BATTERY_TEXT_CHARGING_COLOR = "status_bar_battery_text_charging_color";
-        /** @hide */
-        private static final Validator STATUS_BAR_BATTERY_TEXT_CHARGING_COLOR_VALIDATOR =
-                ANY_STRING_VALIDATOR;
-
-        /**
          * Disable dashboard conditions in settings
          * @hide
          */
@@ -6278,16 +6269,7 @@ public final class Settings {
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 10000);
 
         /**
-         * @hide
-         */
-        public static final String SMART_CHARGING = "smart_charging";
-
-        /**
-         * @hide
-         */
-        public static final String SMART_CHARGING_LEVEL = "smart_charging_level";
-
-        /* * Applications list where heasdup should't show
+         * Applications list where heasdup should't show
          *
          * @hide
          */
@@ -6313,25 +6295,6 @@ public final class Settings {
         public static final String NOTIFICATION_HEADERS = "notification_headers";
 
         private static final Validator NOTIFICATION_HEADERS_VALIDATOR = BOOLEAN_VALIDATOR;
-	/**
-         * Control how to handle the display cutout
-         * @hide
-         */
-        public static final String DISPLAY_CUTOUT_MODE = "display_cutout_mode";
-
-        /** @hide */
-        private static final Validator DISPLAY_CUTOUT_MODE_VALIDATOR = new
-                SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
-
-        /**
-         * Control how to handle the display cutout
-         * @hide
-         */
-        public static final String STOCK_STATUSBAR_IN_HIDE = "stock_statusbar_in_hide";
-
-        /** @hide */
-        private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
-                BOOLEAN_VALIDATOR;
 
         /**
          * Control how to handle the display cutout
@@ -6352,6 +6315,16 @@ public final class Settings {
         /** @hide */
         private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
+
+        /**
+         * @hide
+         */
+        public static final String SMART_CHARGING = "smart_charging";
+
+        /**
+         * @hide
+         */
+        public static final String SMART_CHARGING_LEVEL = "smart_charging_level";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
@@ -6492,7 +6465,6 @@ public final class Settings {
             STATUS_BAR_BATTERY_STYLE,
             STATUS_BAR_SHOW_BATTERY_PERCENT,
             STATUS_BAR_BATTERY_TEXT_CHARGING,
-            STATUS_BAR_BATTERY_TEXT_CHARGING_COLOR,
             STATUS_BAR_LOGO,
             STATUS_BAR_LOGO_STYLE,
             STATUS_BAR_SHOW_CARRIER,
@@ -6996,7 +6968,6 @@ public final class Settings {
             VALIDATORS.put(STATUS_BAR_QUICK_QS_PULLDOWN, STATUS_BAR_QUICK_QS_PULLDOWN_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_BATTERY_STYLE, STATUS_BAR_BATTERY_STYLE_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_BATTERY_TEXT_CHARGING, STATUS_BAR_BATTERY_TEXT_CHARGING_VALIDATOR);
-            VALIDATORS.put(STATUS_BAR_BATTERY_TEXT_CHARGING_COLOR, STATUS_BAR_BATTERY_TEXT_CHARGING_COLOR_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_LOGO, STATUS_BAR_LOGO_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_LOGO_STYLE, STATUS_BAR_LOGO_STYLE_VALIDATOR);
             VALIDATORS.put(STATUS_BAR_SHOW_CARRIER, STATUS_BAR_SHOW_CARRIER_VALIDATOR);
